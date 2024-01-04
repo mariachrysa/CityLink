@@ -1,0 +1,17 @@
+This code is designed to manage and analyze city data, such as establishing connections between cities and calculating the transitiveclosure of these connections. It provides various functionalities related to graph operations and data analysis for cities.\hypertarget{index_features}{}\doxysection{Features}\label{index_features}
+It receives as input a text file which contains the adjacency matrix for a specific set of cities, as well as the indexes of two cities interpeting the source city and the destination city. It can then check if there is a connection (immediate or not) between the two cities, based on the user\textquotesingle{}s needs. Additionally it prints the transitive closure list either on the screen, or in an output file with the according messages for each implementation. It works based on the getopt library, allowing the user to choose what implementations to ask for.\hypertarget{index_Command-Line}{}\doxysection{Argument Guide}\label{index_Command-Line}
+
+\begin{DoxyItemize}
+\item -\/i $<$filename$>$\+: determines the name of the input file
+\item -\/r $<$source\+\_\+city$>$,$<$destination\+\_\+city$>$\+: determines the source city and the destination city
+\item -\/p\+: determines that the calculated transitive closure list R$\ast$ will be printed onto the screen
+\item -\/o\+: determines that the calculated transitive closure list R$\ast$ will be printed onto an output file called out-\/$<$filename$>$.txt
+\end{DoxyItemize}
+
+Disclaimer\+: These commands can be used and called in any order. However the first one which is the -\/i command is mandatory for running the program, all others are optional.\hypertarget{index_How}{}\doxysection{to Use}\label{index_How}
+To use this program you need to open the terminal on your device and\+:
+\begin{DoxyEnumerate}
+\item Type in\+: gcc \mbox{\hyperlink{cityLink_8c}{city\+Link.\+c}} -\/std=c99 -\/o city\+Link
+\item Run the program with ./city\+Link followed by the Command-\/\+Line Argument Guide.
+\end{DoxyEnumerate}\hypertarget{index_bugs}{}\doxysection{Known bugs}\label{index_bugs}
+No Known bugs 

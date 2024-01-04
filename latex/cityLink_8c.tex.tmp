@@ -1,0 +1,229 @@
+\hypertarget{cityLink_8c}{}\doxysection{city\+Link.\+c File Reference}
+\label{cityLink_8c}\index{cityLink.c@{cityLink.c}}
+
+
+This program receives as input a text file which contains the adjacency matrix for a specific set of cities, and the indexes of two cities interpeting the source city and the destination city. It then checks if there is a connection (immediate or not) between the two cities and prints the transitive closure list, with the according messages for each implementation. It works based on the getopt library, allowing the user to choose what implementations to ask for.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for city\+Link.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cityLink_8c_a8057fb7d9a8c8b9054ed00a6a37e9cc8}{run}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function serves as the entry point for the program. It uses the getopt library with its optag uses to process command-\/line arguments provided to the program, including options such as {\ttfamily -\/i}, {\ttfamily -\/r}, {\ttfamily -\/p}, and {\ttfamily -\/o}. It also handles error cases with the appropriate usage messages. \end{DoxyCompactList}\item 
+int $\ast$$\ast$ \mbox{\hyperlink{cityLink_8c_a8ea6bb8111556e1b4a670568afe42ecb}{create\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Dynamically allocates memory to create a square matrix and initializes all elements to zero. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_ae592e5d484eac0fe5c032cfa78c0969f}{free\+Matrix}} (int $\ast$$\ast$matrix)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for a two-\/dimensional integer matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_ada910baadf52170ea34b7cb534c1fa9a}{read\+Adjacency\+Matrix}} (FILE $\ast$input\+File)
+\begin{DoxyCompactList}\small\item\em This function reads the adjacency matrix data from the provided input file and initializes the city matrix used for graph representation. It also performs error checking for file reading. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cityLink_8c_a718ab18709fcc8946cfc1b60cc46fd75}{find\+Path}} (int source, int destination, int $\ast$visited, int $\ast$path, int path\+Index)
+\begin{DoxyCompactList}\small\item\em Recursive function to find a path from a given source city to a given destination city and print the path if it exists. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_a9bda99bcc349d291af91f770bf08fc01}{calculate\+Transitive\+Closure}} (int $\ast$$\ast$city\+Matrix, FILE $\ast$output\+File, int print\+To\+File)
+\begin{DoxyCompactList}\small\item\em This function calculates the transitive closure of a directed graph represented by the city matrix and prints the transitive closure either to an output file or with standard output, based on whichever function calls it (either -\/o or -\/p). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_af3bd154d11688473cfd9036efc61df0e}{implementI}} (char $\ast$$\ast$filename)
+\begin{DoxyCompactList}\small\item\em Implements the \char`\"{}-\/i\char`\"{} option given by the user by opening the input file and reading the adjacency matrix, then printing the adjacency matrix to the console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_af9ce5d937d5f0715a0d7377bea1c2eb1}{implementR}} (char $\ast$$\ast$filename)
+\begin{DoxyCompactList}\small\item\em Implements the \char`\"{}-\/r\char`\"{} option by finding a path between two cities and printing the path if it exists. It uses recursion by calling the find\+Path function which calls itself whenever needed to calculate the path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_a1d6ed244a69e06f796078a0b1d688f86}{implementP}} (char $\ast$$\ast$filename)
+\begin{DoxyCompactList}\small\item\em Implements the \char`\"{}-\/p\char`\"{} option by calculating the transitive closure of the city\+Matrix and printing it to the console, using the calculate\+Transitive\+Closure function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cityLink_8c_a56edb9a3b42acdf2c974a4345d6afd9f}{implementO}} (char $\ast$$\ast$filename)
+\begin{DoxyCompactList}\small\item\em Implements the \char`\"{}-\/o\char`\"{} option by creating an output file, calculating the transitive closure, and then printing it to the file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cityLink_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{cityLink_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cityLink_8c_a7722c8ecbb62d99aee7ce68b1752f337}\label{cityLink_8c_a7722c8ecbb62d99aee7ce68b1752f337}} 
+int {\bfseries N}
+\item 
+\mbox{\Hypertarget{cityLink_8c_a2094b2e2ec8e5ea2fc295e7a9ee70a1c}\label{cityLink_8c_a2094b2e2ec8e5ea2fc295e7a9ee70a1c}} 
+int $\ast$$\ast$ {\bfseries city\+Matrix}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This program receives as input a text file which contains the adjacency matrix for a specific set of cities, and the indexes of two cities interpeting the source city and the destination city. It then checks if there is a connection (immediate or not) between the two cities and prints the transitive closure list, with the according messages for each implementation. It works based on the getopt library, allowing the user to choose what implementations to ask for. 
+
+\begin{DoxyAuthor}{Author}
+Maria Chrysanthou ID\+: 1123114 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]no known bugs \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cityLink_8c_a9bda99bcc349d291af91f770bf08fc01}\label{cityLink_8c_a9bda99bcc349d291af91f770bf08fc01}} 
+\index{cityLink.c@{cityLink.c}!calculateTransitiveClosure@{calculateTransitiveClosure}}
+\index{calculateTransitiveClosure@{calculateTransitiveClosure}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{calculateTransitiveClosure()}{calculateTransitiveClosure()}}
+{\footnotesize\ttfamily void calculate\+Transitive\+Closure (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{city\+Matrix,  }\item[{FILE $\ast$}]{output\+File,  }\item[{int}]{print\+To\+File }\end{DoxyParamCaption})}
+
+
+
+This function calculates the transitive closure of a directed graph represented by the city matrix and prints the transitive closure either to an output file or with standard output, based on whichever function calls it (either -\/o or -\/p). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city\+Matrix} & A 2D integer array representing the adjacency matrix of the graph. \\
+\hline
+{\em output\+File} & A pointer to the output file where the transitive closure is printed (use NULL for no file output). \\
+\hline
+{\em print\+To\+File} & An integer flag (0 or 1) indicating whether to print the closure to a file (1) or standard output (0). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_a8ea6bb8111556e1b4a670568afe42ecb}\label{cityLink_8c_a8ea6bb8111556e1b4a670568afe42ecb}} 
+\index{cityLink.c@{cityLink.c}!createMatrix@{createMatrix}}
+\index{createMatrix@{createMatrix}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{createMatrix()}{createMatrix()}}
+{\footnotesize\ttfamily int $\ast$$\ast$ create\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Dynamically allocates memory to create a square matrix and initializes all elements to zero. 
+
+This function allocates memory to create a square matrix of size N x N, where N is the number of cities in the adjacency matrix. Each element of the matrix is initialized to zero, whereas the matrix is represented as a two-\/dimensional array of integers.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated 2D integer matrix, where each element is initialized to zero. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cityLink_8c_a718ab18709fcc8946cfc1b60cc46fd75}\label{cityLink_8c_a718ab18709fcc8946cfc1b60cc46fd75}} 
+\index{cityLink.c@{cityLink.c}!findPath@{findPath}}
+\index{findPath@{findPath}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{findPath()}{findPath()}}
+{\footnotesize\ttfamily int find\+Path (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{int}]{destination,  }\item[{int $\ast$}]{visited,  }\item[{int $\ast$}]{path,  }\item[{int}]{path\+Index }\end{DoxyParamCaption})}
+
+
+
+Recursive function to find a path from a given source city to a given destination city and print the path if it exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source city given by the user. \\
+\hline
+{\em destination} & The destination city given by the user. \\
+\hline
+{\em visited} & An array representing the visited cities. \\
+\hline
+{\em path} & An array representing the current path needed to be printed. \\
+\hline
+{\em path\+Index} & The index of the current path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if a path is found, 0 if no path exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cityLink_8c_ae592e5d484eac0fe5c032cfa78c0969f}\label{cityLink_8c_ae592e5d484eac0fe5c032cfa78c0969f}} 
+\index{cityLink.c@{cityLink.c}!freeMatrix@{freeMatrix}}
+\index{freeMatrix@{freeMatrix}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{freeMatrix()}{freeMatrix()}}
+{\footnotesize\ttfamily void free\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for a two-\/dimensional integer matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & A pointer to the two-\/dimensional integer matrix to be deallocated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_af3bd154d11688473cfd9036efc61df0e}\label{cityLink_8c_af3bd154d11688473cfd9036efc61df0e}} 
+\index{cityLink.c@{cityLink.c}!implementI@{implementI}}
+\index{implementI@{implementI}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{implementI()}{implementI()}}
+{\footnotesize\ttfamily void implementI (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Implements the \char`\"{}-\/i\char`\"{} option given by the user by opening the input file and reading the adjacency matrix, then printing the adjacency matrix to the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & A pointer to the filename string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_a56edb9a3b42acdf2c974a4345d6afd9f}\label{cityLink_8c_a56edb9a3b42acdf2c974a4345d6afd9f}} 
+\index{cityLink.c@{cityLink.c}!implementO@{implementO}}
+\index{implementO@{implementO}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{implementO()}{implementO()}}
+{\footnotesize\ttfamily void implementO (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Implements the \char`\"{}-\/o\char`\"{} option by creating an output file, calculating the transitive closure, and then printing it to the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & A pointer to the filename string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_a1d6ed244a69e06f796078a0b1d688f86}\label{cityLink_8c_a1d6ed244a69e06f796078a0b1d688f86}} 
+\index{cityLink.c@{cityLink.c}!implementP@{implementP}}
+\index{implementP@{implementP}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{implementP()}{implementP()}}
+{\footnotesize\ttfamily void implementP (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Implements the \char`\"{}-\/p\char`\"{} option by calculating the transitive closure of the city\+Matrix and printing it to the console, using the calculate\+Transitive\+Closure function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & A pointer to the filename string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_af9ce5d937d5f0715a0d7377bea1c2eb1}\label{cityLink_8c_af9ce5d937d5f0715a0d7377bea1c2eb1}} 
+\index{cityLink.c@{cityLink.c}!implementR@{implementR}}
+\index{implementR@{implementR}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{implementR()}{implementR()}}
+{\footnotesize\ttfamily void implementR (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Implements the \char`\"{}-\/r\char`\"{} option by finding a path between two cities and printing the path if it exists. It uses recursion by calling the find\+Path function which calls itself whenever needed to calculate the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & A pointer to the filename string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_ada910baadf52170ea34b7cb534c1fa9a}\label{cityLink_8c_ada910baadf52170ea34b7cb534c1fa9a}} 
+\index{cityLink.c@{cityLink.c}!readAdjacencyMatrix@{readAdjacencyMatrix}}
+\index{readAdjacencyMatrix@{readAdjacencyMatrix}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{readAdjacencyMatrix()}{readAdjacencyMatrix()}}
+{\footnotesize\ttfamily void read\+Adjacency\+Matrix (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+This function reads the adjacency matrix data from the provided input file and initializes the city matrix used for graph representation. It also performs error checking for file reading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & A pointer to the input file from which the adjacency matrix data is read. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cityLink_8c_a8057fb7d9a8c8b9054ed00a6a37e9cc8}\label{cityLink_8c_a8057fb7d9a8c8b9054ed00a6a37e9cc8}} 
+\index{cityLink.c@{cityLink.c}!run@{run}}
+\index{run@{run}!cityLink.c@{cityLink.c}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void run (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function serves as the entry point for the program. It uses the getopt library with its optag uses to process command-\/line arguments provided to the program, including options such as {\ttfamily -\/i}, {\ttfamily -\/r}, {\ttfamily -\/p}, and {\ttfamily -\/o}. It also handles error cases with the appropriate usage messages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments. \\
+\hline
+{\em argv} & An array of strings representing the command-\/line arguments. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,35 @@
+
+ @file README.md
+ @author Maria Chrysanthou   ID: 1123114
+
+ @mainpage README cityLink
+ @section Introduction
+ 
+ This code is designed to manage and analyze city data, such as establishing connections 
+ between cities and calculating the transitiveclosure of these connections. It provides 
+ various functionalities related to graph operations and data analysis for cities.
+ 
+ It receives as input a text file which contains the adjacency
+ matrix for a specific set of cities, as well as the indexes of two cities interpeting
+ the source city and the destination city. It can then check if there is a connection
+ (immediate or not) between the two cities, based on the user's needs. Additionally it 
+ prints the transitive closure list either on the screen, or in an output file
+ with the according messages for each implementation. It works based on the getopt
+ library, allowing the user to choose what implementations to ask for.
+ 
+ @section Command-Line Argument Guide
+  -i <filename>: determines the name of the input file
+  -r <source_city>,<destination_city>: determines the source city and the destination city
+  -p: determines that the calculated transitive closure list R* will be printed onto the screen
+  -o: determines that the calculated transitive closure list R* will be printed onto an output file
+   called out-<filename>.txt
+
+ Disclaimer: These commands can be used and called in any order. However the first one which is the
+ -i command is mandatory for running the program, all others are optional.
+
+ @section How to Use
+ 
+ To use this program you need to open the terminal on your device and: 
+     1. Type in: gcc cityLink.c -std=c99 -o cityLink
+     2. Run the program with ./cityLink followed by the Command-Line Argument Guide.
+
