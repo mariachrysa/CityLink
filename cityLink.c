@@ -6,7 +6,7 @@
  * (immediate or not) between the two cities and prints the transitive closure list,
  * with the according messages for each implementation. It works based on the getopt
  * library, allowing the user to choose what implementations to ask for.
- * @author Maria Chrysanthou ID: 1123114
+ * @author Maria Chrysanthou
  * @bug no known bugs 
  * 
 */
